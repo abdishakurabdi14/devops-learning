@@ -1,0 +1,72 @@
+# Start the Bandit6 Level
+bandit6@bandit:~$ 
+
+# List the directory contents (no output, directory empty)
+bandit6@bandit:~$ ls
+
+# Listing with detailed information (still no interesting files)
+bandit6@bandit:~$ ls -l
+total 0
+
+# Check the current directory path
+bandit6@bandit:~$ pwd
+/home/bandit6
+
+# Listing hidden files (found .bashrc, .profile, but not helpful)
+bandit6@bandit:~$ ls -a
+.  ..  .bash_logout  .bashrc  .profile
+
+# Mistake 1: Tried to use grep without specifying a pattern
+bandit6@bandit:~$ grep
+Usage: grep [OPTION]... PATTERNS [FILE]...
+
+# Solution: Checked grep help to understand its usage
+bandit6@bandit:~$ grep --help
+
+# Mistake 2: Tried to cat a non-existent directory
+bandit6@bandit:~$ cat etc/passwd
+cat: etc/passwd: No such file or directory
+
+bandit6@bandit:~$ cat etc
+cat: etc: No such file or directory
+
+# Check the current user
+bandit6@bandit:~$ whoami
+bandit6
+
+# Check the groups (only part of 'bandit6' group)
+bandit6@bandit:~$ groups
+bandit6
+
+# Check logged-in users (no helpful output)
+bandit6@bandit:~$ users
+bandit0 bandit0 bandit0 bandit0 ...
+
+# Mistake 3: Incorrect use of find with invalid predicates (-password)
+bandit6@bandit:~$ find / -password bandit7
+find: unknown predicate `-password'
+
+# Mistake 4: Tried to switch users without privileges
+bandit6@bandit:~$ login bandit7
+login: Cannot possibly work without effective root
+
+# Mistake 5: Attempted to use chown and sudo without proper permissions
+bandit6@bandit:~$ chown bandit7
+chown: missing operand after ‘bandit7’
+
+bandit6@bandit:~$ sudo chown bandit7
+sudo: /usr/bin/sudo must be owned by uid 0 and have the setuid bit set
+
+# Solution: Corrected find with proper predicates for file size, owner, and group
+bandit6@bandit:~$ find / -size 33c -user bandit7 -group bandit6 2>/dev/null
+
+# Found the file
+/var/lib/dpkg/info/bandit7.password
+
+# Mistake 6: Tried to cd into a file instead of a directory
+bandit6@bandit:~$ cd /var/lib/dpkg/info/bandit7.password
+-bash: cd: /var/lib/dpkg/info/bandit7.password: Not a directory
+
+# Solution: Used cat to retrieve the contents of the password file
+bandit6@bandit:~$ cat /var/lib/dpkg/info/bandit7.password
+morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
