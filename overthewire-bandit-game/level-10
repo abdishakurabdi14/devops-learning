@@ -1,0 +1,28 @@
+# Start Bandit10 Level
+bandit10@bandit:~$
+
+# Check the content of data.txt (base64 encoded string)
+bandit10@bandit:~$ cat data.txt
+VGhlIHBhc3N3b3JkIGlzIGR0UjE3M2ZaS2IwUlJzREZTR3NnMlJXbnBOVmozcVJyCg==
+
+# Decode the base64 content (this produces another base64 string)
+bandit10@bandit:~$ base64 data.txt
+VkdobElIQmhjM04zYjNKa0lHbHpJR1IwVWpFM00yWmFTMkl3VWxKelJFWlRSM05uTWxKWGJuQk9W
+bW96Y1ZKeUNnPT0K
+
+# Sort the original data.txt (the output will be unchanged because there is only one line)
+bandit10@bandit:~$ sort data.txt
+VGhlIHBhc3N3b3JkIGlzIGR0UjE3M2ZaS2IwUlJzREZTR3NnMlJXbnBOVmozcVJyCg==
+
+# Sort the base64 decoded output (produces two lines)
+bandit10@bandit:~$ base64 data.txt | sort
+bW96Y1ZKeUNnPT0K
+VkdobElIQmhjM04zYjNKa0lHbHpJR1IwVWpFM00yWmFTMkl3VWxKelJFWlRSM05uTWxKWGJuQk9W
+
+# Decode the base64 string obtained after sorting
+bandit10@bandit:~$ echo "bW96Y1ZKeUNnPT0K" | base64 -d
+mozcVJyCg==
+
+# Decode the original base64 string to find the final password
+bandit10@bandit:~$ echo "VGhlIHBhc3N3b3JkIGlzIGR0UjE3M2ZaS2IwUlJzREZTR3NnMlJXbnBOVmozcVJyCg==" | base64 -d
+The password is dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
