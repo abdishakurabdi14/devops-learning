@@ -1,0 +1,25 @@
+# Start Bandit8 Level
+bandit8@bandit:~$
+
+# List the directory contents (found data.txt)
+bandit8@bandit:~$ ls
+data.txt
+
+# Check the specific file data.txt to understand its contents
+bandit8@bandit:~$ ls data.txt
+data.txt
+
+# View the contents of the data.txt file (it contains many similar lines)
+bandit8@bandit:~$ cat data.txt
+aMKlTMrptUxxTypCHocCTrqYRkR2gT8h
+PRerp5EfTVxJHKuCZDXfAfRyCQSdPjMi
+...
+
+# Tried using uniq to count unique lines, but it didn't yield the solution
+bandit8@bandit:~$ uniq data.txt -c
+      1 aMKlTMrptUxxTypCHocCTrqYRkR2gT8h
+...
+
+# Sorted and found the unique line in the file, which is the password
+bandit8@bandit:~$ sort data.txt | uniq -u
+4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
