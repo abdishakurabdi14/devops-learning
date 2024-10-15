@@ -1,0 +1,18 @@
+# Start the Bandit7 Level
+bandit7@bandit:~$
+
+# List the directory contents (found data.txt file)
+bandit7@bandit:~$ ls
+data.txt
+
+# Check the contents of data.txt (too much data to handle manually)
+bandit7@bandit:~$ cat data.txt
+momentary	MBLQ2x4SPU4Y6XIscWooXopjdSntWOhY
+vicuña	6nKKKgzHbJvPFsEFQgzd2wqJWcv8TGGQ
+...
+
+# Solution: Used grep to search for the specific "millionth" keyword
+bandit7@bandit:~$ grep "millionth" data.txt
+
+# Found the line containing the correct password
+millionth	dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
