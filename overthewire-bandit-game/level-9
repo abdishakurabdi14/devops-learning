@@ -1,0 +1,45 @@
+# Start Bandit9 Level
+bandit9@bandit:~$
+
+# List the directory contents (found data.txt)
+bandit9@bandit:~$ ls
+data.txt
+
+# Check the content of the data.txt file (contains binary data, not readable)
+bandit9@bandit:~$ cat data.txt
+??%?P??????A???#=??C??LMS6v??pL?d?M...
+
+# Tried using grep to find lines with the "=" character (indicating potential encoded content), got a binary match
+bandit9@bandit:~$ grep "=" data.txt
+grep: data.txt: binary file matches
+
+# Applied the 'strings' command to extract printable characters from the binary file
+bandit9@bandit:~$ strings data.txt
+h!]v..
+
+# Again checked for the "=" character using grep after base64 encoding the binary data (success)
+bandit9@bandit:~$ base64 data.txt
+GL2LJfxQgMceEywIH/uIqfNBtoPiIz3l/UPwHrlMFk0ZUzZ2s7pwA0zCZJ1NCuuO2w3CczqZZYIQ..
+
+# Tried 'strings' to extract printable characters and sorted them
+bandit9@bandit:~$ strings data.txt | sort
+h!]v..
+
+# Applied 'base64' encoding and searched again for "=" (found the encoded password)
+bandit9@bandit:~$ base64 data.txt | strings | grep "="
+TleHm17wiXkAkT4WXlcz2xaIHL2NC2voDzdpTMrVxcPzNjJo6BtrTwPTT7adSwiCwZrpjLY1+UM=
+
+# Thought the password was found, but when attempting to log in, access was denied (wrong assumption)
+bandit9@bandit:~$ exit
+logout
+Connection to bandit.labs.overthewire.org closed.
+
+# Tried sorting and using 'grep' with different options to pinpoint the password
+bandit9@bandit:~$ strings data.txt | sort | grep "="
+3JprD========== passwordi
+3k=fQ
+69}=
+7=oc
+...
+
+# Finally, was able to isolate the correct password using base64 decoding and strings
