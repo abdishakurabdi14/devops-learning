@@ -1,1 +1,49 @@
+# OverTheWire Bandit - Level 5 Solution
+
+# I started by using 'du' to explore the 'inhere' directory
+bandit5@bandit:~$ du -a -b
+# Mistake: I should have focused on files of size 1033 bytes as hinted in the game instructions.
+# Instead, I was looking at every file.
+
+# Output of 'du -a -b' (partial output to show exploration process)
+6351    ./inhere/maybehere02/.file1
+3801    ./inhere/maybehere02/-file1
+6746    ./inhere/maybehere02/spaces file1
+4932    ./inhere/maybehere02/-file3
+...
+807244  .
+
+# Then I used 'du -h' for human-readable file sizes.
+bandit5@bandit:~$ du -h
+64K     ./inhere/maybehere02
+72K     ./inhere/maybehere19
+52K     ./inhere/maybehere08
+...
+1.3M    .
+
+# While exploring, I noticed several files with "spaces" in their names. I made a mistake by focusing on file names rather than sizes.
+# So, I reran 'du -a -h' to get more readable output and target files with unusual sizes.
+bandit5@bandit:~$ du -a -h
+8.0K    ./inhere/maybehere02/.file1
+4.0K    ./inhere/maybehere02/-file1
+8.0K    ./inhere/maybehere02/spaces file1
+8.0K    ./inhere/maybehere02/-file3
+4.0K    ./inhere/maybehere02/-file2
+...
+# Too much irrelevant information, I was getting lost.
+
+# I realized I needed to focus on the specific file size mentioned in the game hint: 1033 bytes.
+# So I switched tactics and used 'find' to narrow down my search.
+bandit5@bandit:~$ find . -type f -size 1033c
+./inhere/maybehere07/.file2
+
+# Success! I found the file with the correct size: './inhere/maybehere07/.file2'
+
+# Now, I simply read the file to retrieve the password for the next level.
+bandit5@bandit:~$ cat ./inhere/maybehere07/.file2
+<password-for-level-6>
+
+# Conclusion:
+# The learning process involved filtering out irrelevant files and focusing on the correct file size (1033 bytes).
+# The key takeaway: Be attentive to game hints and use efficient search commands like 'find' to save time.
 
