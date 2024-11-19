@@ -1,27 +1,9 @@
-# Run the script "level-3.sh"
-./level-3.sh
+Task:
 
-# Encountered errors:
-# - "conditional binary operator expected"
-# - "syntax error near `-f'"
-# This was due to an incorrect use of `-f` in the conditional statement.
+Write a script that checks if a file named hero.txt exists in the Arena directory. If it does, print Hero found!; otherwise, print Hero missing!.
 
-# Original script:
-#!/bin/bash
+Solution:
 
-HERO="./Arena/hero.txt"
-
-if [[ "$ARENA" -f "$HERO" ]]; then  # Incorrect syntax
-        echo "Hero found!"
-else
-        echo "Hero missing!"
-
-fi
-
-# Open the script in Vim to fix the issue
-vim level-3.sh
-
-# Corrected script:
 #!/bin/bash
 
 HERO="./Arena/hero.txt"
@@ -32,11 +14,3 @@ else
         echo "Hero missing!"
 
 fi
-
-# Run the corrected script
-./level-3.sh
-
-# Output:
-# Hero missing!
-
-# This result indicates that the "hero.txt" file does not exist in the specified path.
