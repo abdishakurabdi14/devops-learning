@@ -1,10 +1,9 @@
-# Open a new script file named "number-script.sh" in Vim
-vim number-script.sh
+Task:
 
-# Add the following bash script to count from 1 to 10
-# (Initial content was missing the "done" statement at the end)
+Create a script that outputs the numbers 1 to 10, one number per line.
 
--
+Solution:
+
 #!/bin/bash
 
 count=1
@@ -14,31 +13,4 @@ do
         echo "$count"
         ((count++))
 done
--
 
-# Make the script executable
-chmod +x number-script.sh
-
-# Run the script
-./number-script.sh
-
-# Initial run resulted in an error: "syntax error: unexpected end of file"
-# This was because the "done" statement was missing to close the `while` loop.
-
-# Open the script again in Vim to fix the issue
-vim number-script.sh
-
-# Run the corrected script
-./number-script.sh
-
-# Output:
-# 1
-# 2
-# 3
-# 4
-# 5
-# 6
-# 7
-# 8
-# 9
-# 10
