@@ -1,0 +1,25 @@
+Level 1: The Basics
+
+Mission: Create a directory named Arena and then inside it, create three files: warrior.txt, mage.txt, and archer.txt. List the contents of the Arena directory.
+
+# Create a directory named "Arena"
+mkdir Arena
+
+# Check the contents of the current directory to confirm "Arena" was created
+ls
+
+# Move into the "Arena" directory
+cd Arena
+
+# Create the "warrior.txt" file using Vim (or any editor of your choice)
+vim warrior.txt
+
+# Verify that "warrior.txt" was created
+ls
+
+# Attempted to create "mage.txt" and "archer.txt" with a pipe but corrected the approach
+# Create both "mage.txt" and "archer.txt" using the `touch` command
+touch mage.txt archer.txt
+
+# Verify that all three text files exist in the "Arena" directory
+ls
