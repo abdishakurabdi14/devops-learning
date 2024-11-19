@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Create the Backup directory if it doesn't exist
+mkdir -p ./home/ubuntu/Backup
+
+# Copy all .txt files from the Arena directory to the Backup directory
+cp /home/ubuntu/Arena/*.txt /home/ubuntu/Backup
