@@ -1,0 +1,20 @@
+Task:
+
+Mission: Write a script that sorts all .txt files in a directory by their size, from smallest to largest, and displays the sorted list.
+
+Solution:
+
+#!/bin/bash
+
+sort_files(){
+
+local directory="$1"
+local list
+
+list=$(ls -l "$directory"  | grep "\.txt$"  | sort -k5 -n  )
+
+echo "$list"
+
+}
+
+sort_files "./"
