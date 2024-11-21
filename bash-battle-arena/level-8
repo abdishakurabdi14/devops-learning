@@ -1,0 +1,24 @@
+Task:
+
+Mission: Create a script that searches for a specific word or phrase across all .log files in a directory and outputs the names of the files that contain the word or phrase.
+
+Solution:
+
+#!/bin/bash
+
+log_finder(){
+
+
+local directory="./"
+local word=($1)
+local list
+
+ list=$(grep -l "$word" "$directory"/*.log)
+
+echo "The number of files that contain "$word" are:"
+
+echo "$list"
+
+}
+
+log_finder "$1"
